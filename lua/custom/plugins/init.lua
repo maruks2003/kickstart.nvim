@@ -20,5 +20,6 @@ vim.opt.colorcolumn = "81"
 vim.g.tagbar_left = 1
 
 vim.keymap.set('n', '<F3>', ':TagbarToggle<CR>', {silent=true})
+vim.keymap.set('n', '<Space>', ':Neotree<CR>', {silent=true})
 
 return {}
