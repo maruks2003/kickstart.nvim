@@ -2,6 +2,7 @@
 --  I promise not to create any merge conflicts in this directory :)
 --
 -- See the kickstart.nvim README for more information
+--
 
 vim.opt.termguicolors = true
 vim.opt.splitbelow = true
@@ -19,7 +20,15 @@ end
 vim.opt.colorcolumn = "81"
 vim.g.tagbar_left = 1
 
-vim.keymap.set('n', '<F3>', ':TagbarToggle<CR>', {silent=true})
-vim.keymap.set('n', '<Esc>', ':NeoTreeRevealToggle<CR>', {silent=true})
+-- Show lsp messages on hover
+vim.diagnostic.config({virtual_text = false})
+vim.o.updatetime = 250
+vim.cmd [[autocmd! CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
-return {}
+return {
+    -- Simple colorscheme no setup required
+    "rebelot/kanagawa.nvim",
+    config = function ()
+        vim.cmd.colorscheme("kanagawa")
+    end
+}
